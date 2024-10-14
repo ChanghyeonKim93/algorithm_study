@@ -168,6 +168,9 @@ int main(int argc, char** argv) {
     ConnectNodes(3, 6);
     ConnectNodes(4, 6);
     ConnectNodes(6, 7);
+    AddNode(8, 320, 240);
+    ConnectNodes(2, 8);
+    ConnectNodes(3, 8);
 
     // Visualize nodes
     const cv::Scalar kNodeColor(255, 0, 0);
@@ -198,7 +201,7 @@ int main(int argc, char** argv) {
     cv::line(map_image, cv::Point2i(n0.position.x, n0.position.y),
              cv::Point2i(n1.position.x, n1.position.y), kNearestColor, 6);
 
-    auto shortest_path = FindShortestPath(0, 4);
+    auto shortest_path = FindShortestPath(5, 6);
     std::cerr << "shortest_path.size:" << shortest_path.size() << std::endl;
     for (int i = 0; i < shortest_path.size() - 1; ++i) {
       const auto& n0 = node_list.at(shortest_path[i]);
